@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/admin.html")
+@WebFilter("/admin.jsp")
 public class AdminFilter implements Filter {
 
     /**

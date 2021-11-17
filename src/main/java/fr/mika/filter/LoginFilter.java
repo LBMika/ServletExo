@@ -70,7 +70,7 @@ public class LoginFilter implements Filter{
 		// If user admin -> admin page
 		if (user.getRole().equals("admin")) {
 			HttpServletResponse response = (HttpServletResponse) res;
-			response.sendRedirect(request.getContextPath()+"/admin.html");
+			response.sendRedirect(request.getContextPath()+"/admin.jsp");
 			return;
 		}
 		
