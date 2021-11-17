@@ -17,17 +17,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/acceuil.jsp" })
+@WebFilter(urlPatterns = { "/accueil.jsp" })
 public class LoginFilter implements Filter{
 	private List<User> users;
 
 	public LoginFilter() {
-		
 	}
 	
 	@Override
 	public void init(FilterConfig fconfig) throws ServletException {
-		System.out.println("Log filter init !");
+		System.out.println("Login filter init !");
 		
 		// User list
 		users = new ArrayList<User>();
@@ -50,16 +49,18 @@ public class LoginFilter implements Filter{
 		// Get user parameter
 		String username =  req.getParameter("nom");
 		
+		System.out.println("Je suis là Login Filter");
+		
 		// If user not found -> 404
 		if (username==null) {
 			HttpServletResponse response = (HttpServletResponse) res;
-			response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath()+"/index.html");
 			return;
 		}
 		User user = users.stream().filter(u -> u.getUsername().equals(username)).findFirst().orElse(null);
 		if (user==null) {
 			HttpServletResponse response = (HttpServletResponse) res;
-			response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath()+"/index.html");
 			return;
 		}
 		
@@ -79,7 +80,7 @@ public class LoginFilter implements Filter{
 	
 	@Override
 	public void destroy() {
-		System.out.println("Filter destroy!");
+		System.out.println("Login filter destroy!");
 	}
 
 }
