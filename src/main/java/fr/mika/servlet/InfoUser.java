@@ -22,16 +22,11 @@ public class InfoUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		User user = (User) request.getAttribute("user");
-		if (user==null) {
-			// Redirect
-			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath+"/");
-			return;
-		}
-		else {
-			// Dispatch
-		}
-		
+		User user = (User) session.getAttribute("user");
+	
+		request.setAttribute("username", user.getUsername());
+		request.setAttribute("email", user.getEmail());
+		request.setAttribute("nbArticles", user.getArticles().size());
+		request.getRequestDispatcher("/infouser.jsp").forward(request, response);
 	}
 }
