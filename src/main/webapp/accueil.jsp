@@ -11,5 +11,7 @@
 <br>
 <a href="./infouser">User infos</a>
 <a href="./articles"> Articles</a>
+<br/><br/>
+<a href="./clear">Effacer la session</a>
 </body>
 </html>
