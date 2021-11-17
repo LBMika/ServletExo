@@ -14,5 +14,7 @@
 <p>
 <%= request.getParameter("text") %>
 </p>
+</br></br>
+<a href="<%=request.getContextPath() %>/articles">Retour</a>
 </body>
 </html>

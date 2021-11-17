@@ -46,6 +46,23 @@ public class LoginFilter implements Filter{
 		
 
 		HttpServletRequest request = (HttpServletRequest) req;
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		// Already connected
+		if (user!=null) {
+			// If user admin -> admin page
+			if (user.getRole().equals("admin")) {
+				HttpServletResponse response = (HttpServletResponse) res;
+				response.sendRedirect(request.getContextPath()+"/admin.jsp");
+			}
+			else {
+				// Otherwise -> accueil page
+				chain.doFilter(req, res);
+			}
+			return;
+		}
+		
 		// Get user parameter
 		String username =  req.getParameter("nom");
 		
@@ -57,7 +74,7 @@ public class LoginFilter implements Filter{
 			response.sendRedirect(request.getContextPath()+"/index.html");
 			return;
 		}
-		User user = users.stream().filter(u -> u.getUsername().equals(username)).findFirst().orElse(null);
+		user = users.stream().filter(u -> u.getUsername().equals(username)).findFirst().orElse(null);
 		if (user==null) {
 			HttpServletResponse response = (HttpServletResponse) res;
 			response.sendRedirect(request.getContextPath()+"/index.html");
@@ -65,7 +82,6 @@ public class LoginFilter implements Filter{
 		}
 		
 		// Session
-		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
 		// If user admin -> admin page
 		if (user.getRole().equals("admin")) {

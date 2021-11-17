@@ -21,6 +21,7 @@
 <a href="<%=request.getContextPath() %>/article.jsp?<%= param%>">
 <h3><%= a.getTitre() %></a></h3>
 <% } %>
-
+</br></br>
+<a href="<%=request.getContextPath() %>/accueil.jsp">Retour</a>
 </body>
 </html>

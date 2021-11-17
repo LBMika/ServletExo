@@ -14,5 +14,8 @@
 <h2>Username : <%=request.getAttribute("username") %></h2>
 <h2>Email : <%=request.getAttribute("email") %></h2>
 <h2>Nombre d'articles : <%=request.getAttribute("nbArticles") %></h2>
+
+</br></br>
+<a href="<%=request.getContextPath() %>/accueil.jsp">Retour</a>
 </body>
 </html>
