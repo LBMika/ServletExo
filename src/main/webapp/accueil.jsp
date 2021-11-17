@@ -9,7 +9,7 @@
 <body>
 <h1>Accueil</h1>
 <br>
-<a href="./userinfo.jsp">User infos</a>
+<a href="./infouser">User infos</a>
 <a href="./articles.jsp"> Articles</a>
 </body>
 </html>
