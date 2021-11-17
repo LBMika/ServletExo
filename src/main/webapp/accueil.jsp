@@ -10,6 +10,6 @@
 <h1>Accueil</h1>
 <br>
 <a href="./infouser">User infos</a>
-<a href="./articles.jsp"> Articles</a>
+<a href="./articles"> Articles</a>
 </body>
 </html>
