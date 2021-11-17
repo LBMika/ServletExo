@@ -33,9 +33,7 @@ public class AdminFilter implements Filter {
 	}
 
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
+	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -46,10 +44,13 @@ public class AdminFilter implements Filter {
 		System.out.println("Je suis là Admin Filter");
 		
 		if (user==null || !user.getRole().equals("admin")) {
+			System.out.println("Redirect vers 404");
 			HttpServletResponse response = (HttpServletResponse) res;
 			response.sendRedirect(request.getContextPath()+"/index.html");
 			return;
 		}
+		
+		System.out.println("User : "+user.getUsername());
 		
 		chain.doFilter(req, res);
 	}
