@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	
+%>
 <h1>Mes infos</h1>
+<h2>Username : <%=request.getAttribute("username") %></h2>
+<h2>Email : <%=request.getAttribute("email") %></h2>
+<h2>Nombre d'articles : <%=request.getAttribute("nbArticles") %></h2>
 </body>
 </html>
