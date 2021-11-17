@@ -48,9 +48,16 @@ public class LoginFilter implements Filter{
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		String username =  req.getParameter("nom");
+		System.out.println(username);
+
+		System.out.println("Je suis là Login Filter");
 		
 		// Already connected
-		if (user!=null) {
+		if (user!=null && username==null) {
+			
+			System.out.println("Login Filter session en cours");
+			
 			// If user admin -> admin page
 			if (user.getRole().equals("admin")) {
 				HttpServletResponse response = (HttpServletResponse) res;
@@ -62,11 +69,8 @@ public class LoginFilter implements Filter{
 			}
 			return;
 		}
+		System.out.println("Login Filter pas de session");
 		
-		// Get user parameter
-		String username =  req.getParameter("nom");
-		
-		System.out.println("Je suis là Login Filter");
 		
 		// If user not found -> 404
 		if (username==null) {
